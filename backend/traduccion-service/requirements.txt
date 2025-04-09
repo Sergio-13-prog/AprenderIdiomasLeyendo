@@ -1,0 +1,4 @@
+flask
+argostranslate
+libretranslate==1.6.4
+#numpy==1.24.3  # Si es necesario

@@ -1,0 +1,39 @@
+# Android Studio
+.gradle/
+.local/
+.idea/
+*.iml
+*.keystore
+local.properties
+
+# Build
+/build/
+*/build/
+*.apk
+*.dex
+*.class
+*.jar
+
+# Cache
+*.log
+*.tmp
+
+# Env
+.env
+
+# Python backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env
+venv/
+ENV/
+env/
+*.sqlite3
+
+# Otros
+*.log
+*.tmp
+*.swp

@@ -1,0 +1,43 @@
+ <!-- res/layout/popup_translation.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:background="@drawable/popup_background"
+android:padding="16dp"
+android:elevation="8dp">
+
+<!-- Sección de Traducción -->
+<TextView
+    android:id="@+id/translationText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="18sp"
+    android:textColor="@android:color/black"
+    android:padding="12dp"
+    android:gravity="center"
+    android:textStyle="bold"
+    android:background="@android:color/darker_gray"
+    android:text="Traducción aquí..."
+    android:layout_marginBottom="8dp"/>
+
+<!-- Sección de Detalles -->
+<TextView
+    android:id="@+id/wordDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="14sp"
+    android:textColor="@android:color/black"
+    android:padding="12dp"
+    android:gravity="start"
+    android:text="Detalles de la palabra aquí..."
+    android:background="@android:color/white"/>
+    <Button
+        android:id="@+id/btnSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar palabra"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  traduccion:
+    build: ./traduccion-service
+    container_name: traduccion-container
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./models:/app/models
+    restart: always
+
+  analisis:
+    build: ./analisis2-service
+    container_name: analisis-container
+    ports:
+      - "5004:5004"
+
+  api_central:
+    build: ./api-central
+    container_name: api-central-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - traduccion
+      - analisis

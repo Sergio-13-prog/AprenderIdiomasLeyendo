@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/level_a1"
+        android:title="Nivel A1" />
+    <item
+        android:id="@+id/level_a2"
+        android:title="Nivel A2" />
+    <item
+        android:id="@+id/nivel1Button"
+        android:title="Nivel B1" />
+    <item
+        android:id="@+id/level_b2"
+        android:title="Nivel B2" />
+    <item
+        android:id="@+id/level_c1"
+        android:title="Nivel C1" />
+    <item
+        android:id="@+id/level_c2"
+        android:title="Nivel C2" />
+</menu>

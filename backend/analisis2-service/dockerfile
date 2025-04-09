@@ -1,0 +1,21 @@
+# Imagen base de Python
+FROM python:3.9-slim
+
+# Establecer directorio de trabajo
+WORKDIR /app
+
+# Copiar archivos del proyecto
+COPY requirements.txt .
+COPY analisis2-service.py .
+
+# Instalar dependencias
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Descargar modelos de Stanza dentro del contenedor
+RUN python -c "import stanza; stanza.download('fr'); stanza.download('de');stanza.download('en');stanza.download('es')"
+
+# Exponer el puerto 5002
+EXPOSE 5002
+
+# Comando de ejecución
+CMD ["python", "analisis2-service.py"]

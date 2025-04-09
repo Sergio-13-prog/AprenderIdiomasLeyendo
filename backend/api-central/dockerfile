@@ -1,0 +1,29 @@
+# Utilizamos una imagen base de Python ligera
+FROM python:3.11-slim
+
+# Instalamos dependencias del sistema necesarias para LibreTranslate
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    pkg-config \
+    libicu-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+
+COPY requirements.txt .
+# Instalamos pip y las dependencias de Python
+RUN pip install --no-cache-dir --upgrade pip
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiamos la lógica de la aplicación
+COPY ./api-central.py /app/api-central.py
+
+# Establecemos el directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Exponemos el puerto en el que correrá la aplicación
+EXPOSE 8081
+
+# Ejecutamos el servidor
+CMD ["python", "api-central.py"]

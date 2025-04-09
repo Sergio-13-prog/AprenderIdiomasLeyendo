@@ -1,0 +1,35 @@
+# Utilizamos una imagen base de Python ligera
+FROM python:3.11-slim
+
+# Instalamos dependencias del sistema necesarias para LibreTranslate
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    pkg-config \
+    libicu-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalamos pip y las dependencias de Python
+RUN pip install --no-cache-dir --upgrade pip
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Instalamos Argos Translate CLI (argospm)
+RUN pip install argostranslate
+
+# Instalamos todos los modelos de traducción disponibles
+#RUN python3 -c "import argostranslate.package; \
+#    argostranslate.package.update_package_index(); \
+#    [argostranslate.package.install_from_path(pkg.download()) for pkg in argostranslate.package.get_available_packages()]"
+
+# Copiamos la lógica de la aplicación
+COPY ./traduccion-service.py /app/traduccion-service.py
+
+# Establecemos el directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Exponemos el puerto en el que correrá la aplicación
+EXPOSE 5001
+
+# Ejecutamos el servidor
+CMD ["python", "traduccion-service.py"]
